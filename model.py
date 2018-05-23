@@ -127,6 +127,9 @@ class pix2pix(object):
         )
         save_images(samples, [self.batch_size, 1],
                     './{}/train_{:02d}_{:04d}.png'.format(sample_dir, epoch, idx))
+        # 自己添加， 方便可视化
+        save_images(sample_images[:, :, :, 3:6], [self.batch_size, 1],
+                    './{}/train_{:02d}_{:04d}.png'.format(sample_dir, epoch, idx+1))
         print("[Sample] d_loss: {:.8f}, g_loss: {:.8f}".format(d_loss, g_loss))
 
     def train(self, args):
